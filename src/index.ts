@@ -7,33 +7,26 @@ import sizeOf from "image-size";
 import fetch from "node-fetch";
 import * as path from "path";
 import { parse } from "twemoji-parser";
-import { promisify } from "util";
-
-const readFileAsync = promisify(fs.readFile);
+import { parseEmojiFile } from "./parse-emoji-file";
 
 const ITEMS_PER_ROW = 42;
 
 const program = new Command();
 
+interface Options {
+  outFile: string;
+}
+
 program
+  .name("npx twemoji-spritesheet")
   .arguments("<inputFile>")
   .option(
-    "-o --out-file",
+    "-o --out-file <filename>",
     "the location of the output file, relative to the current working directory",
     "twemoji-spritesheet.png"
   )
-  .action(async (inputFile: string) => {
-    const absPath = path.resolve(inputFile);
-
-    const content = await readFileAsync(absPath, { encoding: "utf-8" });
-
-    const json: [] = JSON.parse(content);
-
-    const emojiList = json.flatMap(
-      (category: { emojis: string[] }) => category.emojis
-    );
-
-    console.log(emojiList);
+  .action(async (inputFile: string, options: Options) => {
+    const emojiList = await parseEmojiFile(inputFile);
 
     const urlList = emojiList.map((emoji: string) => parse(emoji)[0].url);
 
@@ -69,7 +62,7 @@ program
       })
     );
 
-    const out = fs.createWriteStream(path.resolve("change-me.png"));
+    const out = fs.createWriteStream(path.resolve(options.outFile));
     const stream = canvas.createPNGStream();
     stream.pipe(out);
   });
