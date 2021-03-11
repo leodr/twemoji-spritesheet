@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "lib": ["es2019", "es2020.promise", "es2020.bigint", "es2020.string"],
     "module": "commonjs",
-    "target": "es2019",
-    "strict": true,
-    "esModuleInterop": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "strict": true,
+    "target": "es2019"
   }
 }

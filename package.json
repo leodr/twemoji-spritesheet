@@ -4,14 +4,16 @@
   "repository": "github:leodr/twemoji-spritesheet",
   "license": "MIT",
   "author": "Leonhard Driesch",
-  "main": "index.js",
   "bin": "dist/index.js",
   "scripts": {
     "format": "prettier . --write --ignore-path .gitignore",
-    "dev": "ncc run index.ts",
-    "build": "ncc build index.ts --minify --out dist"
+    "dev": "ts-node src/index.ts ./emojis-en-v13.0.json --out-file my-output.png",
+    "build": "ncc build src/index.ts --minify --out dist",
+    "test": "jest"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/mock-fs": "^4.13.0",
     "@types/node-fetch": "^2.5.8",
     "@types/twemoji-parser": "^12.1.0",
     "@typescript-eslint/eslint-plugin": "^4.17.0",
@@ -21,9 +23,12 @@
     "commander": "^7.1.0",
     "eslint": "^7.21.0",
     "image-size": "^0.9.4",
+    "jest": "^26.6.3",
+    "mock-fs": "^4.13.0",
     "node-fetch": "^2.6.1",
     "prettier": "^2.2.1",
     "prettier-plugin-packagejson": "^2.2.10",
+    "ts-jest": "^26.5.3",
     "ts-node": "^9.1.1",
     "twemoji-parser": "^13.0.0",
     "typescript": "^4.2.3",
