@@ -4,10 +4,11 @@
   "license": "MIT",
   "author": "Leonhard Driesch",
   "main": "index.js",
+  "bin": "dist/index.js",
   "scripts": {
     "format": "prettier . --write --ignore-path .gitignore",
     "dev": "ncc run index.ts",
-    "build": "ncc build index.ts --minify --out dist/index.js"
+    "build": "ncc build index.ts --minify --out dist"
   },
   "devDependencies": {
     "@types/node-fetch": "^2.5.8",

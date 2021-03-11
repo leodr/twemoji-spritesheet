@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { createCanvas, loadImage } from "canvas";
 import { Command } from "commander";
 import * as fs from "fs";
