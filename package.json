@@ -1,10 +1,20 @@
 {
   "name": "twemoji-spritesheet",
-  "version": "1.0.0",
+  "version": "0.0.1",
+  "keywords": [
+    "twemoji",
+    "emoji-picker",
+    "emojis",
+    "spritesheet",
+    "spritesheet-packer"
+  ],
   "repository": "github:leodr/twemoji-spritesheet",
   "license": "MIT",
   "author": "Leonhard Driesch",
   "bin": "dist/index.js",
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "format": "prettier . --write --ignore-path .gitignore",
     "dev": "ts-node src/index.ts ./emojis-en-v13.0.json --out-file my-output.png",
