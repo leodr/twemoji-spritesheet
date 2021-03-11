@@ -6,6 +6,9 @@ import pkgJson from "../package.json";
 
 const execAsync = promisify(exec);
 
+// Set the timeout to 30 seconds, because our script might take a while.
+jest.setTimeout(30000);
+
 test("should create a png file", async () => {
   const binPath = path.resolve(pkgJson.bin);
 
