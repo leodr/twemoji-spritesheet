@@ -46,5 +46,5 @@ test("should throw for invalid data", async () => {
 
   const emojiData = parseEmojiFile("emoji-input-file.json");
 
-  expect(async () => await emojiData).rejects.toBeTruthy();
+  await expect(async () => await emojiData).rejects.toBeTruthy();
 });
