@@ -13,7 +13,8 @@
     "lint": "eslint . --ignore-path .gitignore",
     "check-types": "tsc --noEmit",
     "check-format": "prettier . --ignore-path .gitignore --check",
-    "validate": "run-p test lint check-types check-format"
+    "validate": "run-p test lint check-types check-format",
+    "prepublishOnly": "yarn validate && yarn build"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
