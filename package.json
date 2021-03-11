@@ -1,6 +1,7 @@
 {
   "name": "twemoji-spritesheet",
   "version": "1.0.0",
+  "repository": "github:leodr/twemoji-spritesheet",
   "license": "MIT",
   "author": "Leonhard Driesch",
   "main": "index.js",
