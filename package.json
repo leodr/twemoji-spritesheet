@@ -1,6 +1,6 @@
 {
   "name": "twemoji-spritesheet",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "keywords": [
     "twemoji",
     "emoji-picker",
@@ -11,7 +11,9 @@
   "repository": "github:leodr/twemoji-spritesheet",
   "license": "MIT",
   "author": "Leonhard Driesch",
-  "bin": "dist/index.js",
+  "bin": {
+    "twemoji-spritesheet": "dist/index.js"
+  },
   "files": [
     "dist/"
   ],
