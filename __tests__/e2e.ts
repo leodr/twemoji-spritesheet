@@ -10,7 +10,7 @@ const execAsync = promisify(exec);
 jest.setTimeout(30000);
 
 test("should create a png file", async () => {
-  const binPath = path.resolve(pkgJson.bin);
+  const binPath = path.resolve(pkgJson.bin["twemoji-spritesheet"]);
 
   await execAsync(
     `node ${binPath} ./emojis-en-v13.0.json --out-file output.png`,
