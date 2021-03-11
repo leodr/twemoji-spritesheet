@@ -1,0 +1,32 @@
+{
+  "name": "twemoji-spritesheet",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Leonhard Driesch",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier . --write --ignore-path .gitignore",
+    "dev": "ncc run index.ts",
+    "build": "ncc build index.ts --minify --out dist/index.js"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.5.8",
+    "@types/twemoji-parser": "^12.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.17.0",
+    "@typescript-eslint/parser": "^4.17.0",
+    "@vercel/ncc": "^0.27.0",
+    "canvas": "^2.7.0",
+    "commander": "^7.1.0",
+    "eslint": "^7.21.0",
+    "image-size": "^0.9.4",
+    "node-fetch": "^2.6.1",
+    "prettier": "^2.2.1",
+    "prettier-plugin-packagejson": "^2.2.10",
+    "ts-node": "^9.1.1",
+    "twemoji-parser": "^13.0.0",
+    "typescript": "^4.2.3"
+  },
+  "engines": {
+    "node": ">=12"
+  }
+}
