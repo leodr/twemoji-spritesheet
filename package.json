@@ -10,7 +10,8 @@
     "dev": "ts-node src/index.ts ./emojis-en-v13.0.json --out-file my-output.png",
     "build": "ncc build src/index.ts --minify --out dist",
     "test": "jest",
-    "lint": "eslint . --ignore-path .gitignore"
+    "lint": "eslint . --ignore-path .gitignore",
+    "check-types": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
