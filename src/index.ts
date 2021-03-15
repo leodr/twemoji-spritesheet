@@ -9,7 +9,7 @@ import * as path from "path";
 import { parse } from "twemoji-parser";
 import { parseEmojiFile } from "./parse-emoji-file";
 
-const ITEMS_PER_ROW = 42;
+const COLUMN_COUNT = 42;
 
 const program = new Command();
 
@@ -38,31 +38,31 @@ program
     const { width, height } = sizeOf(image);
 
     if (!width || !height) {
-      throw Error("");
+      throw Error("Could not get the emoji image dimensions.");
     }
 
-    canvas.width = ITEMS_PER_ROW * width;
-    canvas.height = Math.ceil(urlList.length / ITEMS_PER_ROW) * height;
+    const rowCount = Math.ceil(urlList.length / COLUMN_COUNT);
 
-    const canvasImage = await loadImage(image);
-
-    ctx.drawImage(canvasImage, 0, 0);
+    canvas.width = COLUMN_COUNT * width;
+    canvas.height = rowCount * height;
 
     await Promise.all(
-      urlList.slice(1).map(async (emoji: string, index) => {
+      urlList.map(async (emoji: string, index) => {
         const image = await fetch(emoji).then((res) => res.buffer());
 
         const canvasImage = await loadImage(image);
 
         ctx.drawImage(
           canvasImage,
-          (index % ITEMS_PER_ROW) * width,
-          Math.floor(index / ITEMS_PER_ROW) * height
+          (index % COLUMN_COUNT) * width,
+          Math.floor(index / COLUMN_COUNT) * height
         );
       })
     );
 
-    const out = fs.createWriteStream(path.resolve(options.outFile));
+    const outputPath = path.resolve(options.outFile);
+
+    const out = fs.createWriteStream(outputPath);
     const stream = canvas.createPNGStream();
     stream.pipe(out);
   });
